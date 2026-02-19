@@ -1,15 +1,13 @@
-// ==========================
-// UNIVERSAL CURSOR + GLOW
-// ==========================
+// ===== MOUSE + CURSOR =====
 
 const glow = document.querySelector(".mouse-glow");
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorOutline = document.querySelector(".cursor-outline");
+const dot = document.querySelector(".cursor-dot");
+const outline = document.querySelector(".cursor-outline");
 
-let outlineX = 0;
-let outlineY = 0;
 let mouseX = 0;
 let mouseY = 0;
+let outlineX = 0;
+let outlineY = 0;
 
 document.addEventListener("mousemove", (e) => {
   mouseX = e.clientX;
@@ -20,85 +18,69 @@ document.addEventListener("mousemove", (e) => {
     glow.style.top = mouseY + "px";
   }
 
-  if (cursorDot) {
-    cursorDot.style.left = mouseX + "px";
-    cursorDot.style.top = mouseY + "px";
+  if (dot) {
+    dot.style.left = mouseX + "px";
+    dot.style.top = mouseY + "px";
   }
 });
 
-// Smooth trailing circle
-function animateOutline() {
-  outlineX += (mouseX - outlineX) * 0.15;
-  outlineY += (mouseY - outlineY) * 0.15;
+function animate() {
+  outlineX += (mouseX - outlineX) * 0.3;  // FASTER
+  outlineY += (mouseY - outlineY) * 0.3;  // FASTER
 
-  if (cursorOutline) {
-    cursorOutline.style.left = outlineX + "px";
-    cursorOutline.style.top = outlineY + "px";
+  if (outline) {
+    outline.style.left = outlineX + "px";
+    outline.style.top = outlineY + "px";
   }
 
-  requestAnimationFrame(animateOutline);
+  requestAnimationFrame(animate);
 }
 
-animateOutline();
+animate();
 
-// Hover expansion
 document.querySelectorAll("a, button").forEach(el => {
-  el.addEventListener("mouseenter", () => {
-    if (cursorOutline) cursorOutline.classList.add("hover");
-  });
-
-  el.addEventListener("mouseleave", () => {
-    if (cursorOutline) cursorOutline.classList.remove("hover");
-  });
+  el.addEventListener("mouseenter", () => outline.classList.add("hover"));
+  el.addEventListener("mouseleave", () => outline.classList.remove("hover"));
 });
 
 
-// ==========================
-// PANEL ANIMATION (Safe)
-// ==========================
+// ===== PANEL SCROLL =====
 
 const panels = document.querySelectorAll(".panel");
 
-function animatePanels() {
-  if (!panels.length) return;
-
-  const triggerPoint = window.innerHeight * 0.85;
+function handleScroll() {
+  const trigger = window.innerHeight * 0.8;
 
   panels.forEach(panel => {
-    const panelTop = panel.getBoundingClientRect().top;
+    const top = panel.getBoundingClientRect().top;
 
-    if (panelTop < triggerPoint && panelTop > -200) {
+    if (top < trigger && top > -trigger) {
       panel.classList.add("active");
       panel.classList.remove("out");
-    } else {
+    } else if (top <= -trigger) {
       panel.classList.remove("active");
       panel.classList.add("out");
     }
   });
 }
 
-window.addEventListener("scroll", animatePanels);
-window.addEventListener("load", animatePanels);
+window.addEventListener("scroll", handleScroll);
+window.addEventListener("load", handleScroll);
 
 
-// ==========================
-// NAVBAR HIDE ON SCROLL
-// ==========================
+// ===== NAVBAR HIDE =====
 
-let lastScrollTop = 0;
-const navbar = document.querySelector("nav");
+let lastScroll = 0;
+const nav = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
-  let currentScroll =
-    window.pageYOffset || document.documentElement.scrollTop;
+  const current = window.pageYOffset;
 
-  if (!navbar) return;
-
-  if (currentScroll > lastScrollTop) {
-    navbar.style.top = "-100px";
+  if (current > lastScroll) {
+    nav.style.top = "-100px";
   } else {
-    navbar.style.top = "0";
+    nav.style.top = "0";
   }
 
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  lastScroll = current;
 });
