@@ -44,7 +44,7 @@ document.querySelectorAll("a, button").forEach(el => {
 });
 
 
-// ===== PANEL SCROLL =====
+// ===== PANEL SCROLL FIX =====
 
 const panels = document.querySelectorAll(".panel");
 
@@ -52,12 +52,19 @@ function handleScroll() {
   const trigger = window.innerHeight * 0.8;
 
   panels.forEach(panel => {
-    const top = panel.getBoundingClientRect().top;
+    const rect = panel.getBoundingClientRect();
 
-    if (top < trigger && top > -trigger) {
+    // If page is short, just activate immediately
+    if (document.body.scrollHeight <= window.innerHeight) {
       panel.classList.add("active");
       panel.classList.remove("out");
-    } else if (top <= -trigger) {
+      return;
+    }
+
+    if (rect.top < trigger && rect.bottom > 0) {
+      panel.classList.add("active");
+      panel.classList.remove("out");
+    } else {
       panel.classList.remove("active");
       panel.classList.add("out");
     }
@@ -66,6 +73,7 @@ function handleScroll() {
 
 window.addEventListener("scroll", handleScroll);
 window.addEventListener("load", handleScroll);
+
 
 
 // ===== NAVBAR HIDE =====
@@ -84,3 +92,4 @@ window.addEventListener("scroll", () => {
 
   lastScroll = current;
 });
+
