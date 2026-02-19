@@ -210,6 +210,47 @@ nav a:hover {
   transform: translateX(200px);
 }
 
+/* ================= CONTACT FORM ================= */
+
+.contact-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4D7CFE;
+}
+
+.contact-form button {
+  background: #4D7CFE;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  opacity: 0.85;
+}
+
 
 /* ================= FOOTER ================= */
 
@@ -218,3 +259,4 @@ nav a:hover {
   padding: 80px;
   margin-top: 100px;
 }
+
