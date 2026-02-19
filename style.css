@@ -1,6 +1,4 @@
-/* =========================
-   GLOBAL RESET
-========================= */
+/* ================= GLOBAL ================= */
 
 * {
   margin: 0;
@@ -21,9 +19,7 @@ body {
 }
 
 
-/* =========================
-   MOUSE GLOW
-========================= */
+/* ================= MOUSE GLOW ================= */
 
 .mouse-glow {
   position: fixed;
@@ -34,13 +30,11 @@ body {
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 1;
-  transition: 0.05s linear;
+  transition: 0.03s linear;
 }
 
 
-/* =========================
-   CUSTOM CURSOR
-========================= */
+/* ================= CUSTOM CURSOR ================= */
 
 .cursor-dot {
   width: 8px;
@@ -54,27 +48,24 @@ body {
 }
 
 .cursor-outline {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border: 2px solid rgba(77,124,254,0.6);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
+  transition: width 0.15s ease, height 0.15s ease;
 }
 
 .cursor-outline.hover {
-  width: 60px;
-  height: 60px;
-  border-color: #4D7CFE;
+  width: 55px;
+  height: 55px;
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAVBAR ================= */
 
 nav {
   position: fixed;
@@ -86,7 +77,7 @@ nav {
   z-index: 1000;
   background: rgba(11,11,15,0.4);
   backdrop-filter: blur(12px);
-  transition: top 0.4s ease;
+  transition: top 0.3s ease;
 }
 
 nav ul {
@@ -98,20 +89,16 @@ nav ul {
 nav a {
   text-decoration: none;
   color: white;
-  font-size: 15px;
   opacity: 0.8;
   transition: 0.3s ease;
 }
 
 nav a:hover {
-  opacity: 1;
   color: #4D7CFE;
 }
 
 
-/* =========================
-   HERO SECTION
-========================= */
+/* ================= HERO ================= */
 
 .hero {
   height: 100vh;
@@ -120,182 +107,114 @@ nav a:hover {
   padding-left: 120px;
   background:
     radial-gradient(circle at 20% 30%, rgba(77,124,254,0.15), transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(139,92,246,0.1), transparent 50%),
     linear-gradient(to right, #0B0B0F 40%, #11163a 100%);
-  position: relative;
-  z-index: 2;
-}
-
-.hero-content {
-  max-width: 800px;
-  z-index: 5;
 }
 
 .hero h1 {
-  font-size: 80px;
-  font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1.05;
-  margin-bottom: 24px;
+  font-size: 70px;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 18px;
-  opacity: 0.75;
-  letter-spacing: 1px;
+  opacity: 0.7;
 }
 
 
-/* =========================
-   PANEL SECTIONS
-========================= */
+/* ================= PANELS ================= */
 
 .panel {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 100px;
-  position: relative;
-  z-index: 2;
 }
 
 .panel-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 80px;
   width: 100%;
   padding: 60px;
   border-radius: 24px;
 
-  background: rgba(20, 20, 30, 0.6);
+  background: rgba(20,20,30,0.6);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 
-  opacity: 0;
-  transform: translateY(100px);
-  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: 0.9s cubic-bezier(0.22,1,0.36,1);
 }
 
 .panel-inner.reverse {
   flex-direction: row-reverse;
 }
 
-.panel-inner:hover {
-  transform: translateY(-8px);
-  border: 1px solid rgba(77,124,254,0.3);
+/* IMAGE */
+
+.panel-image {
+  width: 45%;
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+
+.panel-inner.reverse .panel-image {
+  transform: translateX(150px);
 }
 
 .panel-image img {
-  width: 450px;
+  width: 100%;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
+/* TEXT */
+
 .panel-text {
-  max-width: 500px;
+  width: 45%;
+  opacity: 0;
+  transform: translateX(150px);
+  transition: 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+
+.panel-inner.reverse .panel-text {
+  transform: translateX(-150px);
 }
 
 .panel-text h2 {
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
 .panel-text p {
-  font-size: 18px;
   opacity: 0.8;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
-/* Active Animation */
-.panel.active .panel-inner {
+/* ACTIVE IN */
+
+.panel.active .panel-image,
+.panel.active .panel-text {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
-.panel.out .panel-inner {
+/* OUT */
+
+.panel.out .panel-image {
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateX(-200px);
+}
+
+.panel.out .panel-text {
+  opacity: 0;
+  transform: translateX(200px);
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 .footer {
   background: #11163a;
-  padding: 80px 100px;
+  padding: 80px;
   margin-top: 100px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 80px;
-  flex-wrap: wrap;
-}
-
-.footer h3 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.footer h4 {
-  margin-bottom: 15px;
-}
-
-.footer a {
-  display: block;
-  text-decoration: none;
-  color: white;
-  opacity: 0.7;
-  margin-bottom: 8px;
-  transition: 0.3s ease;
-}
-
-.footer a:hover {
-  opacity: 1;
-  color: #4D7CFE;
-}
-
-.footer-bottom {
-  margin-top: 60px;
-  text-align: center;
-  opacity: 0.6;
-  font-size: 14px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1000px) {
-
-  .hero {
-    padding: 80px 40px;
-  }
-
-  .hero h1 {
-    font-size: 48px;
-  }
-
-  .panel {
-    padding: 60px 30px;
-  }
-
-  .panel-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .panel-image img {
-    width: 100%;
-  }
-
-  nav {
-    padding: 20px 30px;
-  }
 }
