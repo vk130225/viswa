@@ -2,11 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Projects | Viswa</title>
+  <title>Viswa | Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="mouse-glow"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
 
 <nav>
   <ul>
@@ -16,77 +20,59 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
-<!-- Mouse Glow -->
-<div class="mouse-glow"></div>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-<section class="page-hero">
-  <h1>Selected Projects</h1>
-  <p>Engineering Systems That Actually Work.</p>
+<!-- HERO -->
+<section class="hero" style="height:60vh;">
+  <div>
+    <h1>Projects</h1>
+    <p>Engineering ideas into real systems.</p>
+  </div>
 </section>
 
-<!-- FEATURE PROJECT 1 -->
-<section class="project-feature">
-  <div class="feature-inner">
-    <div class="feature-text">
-      <h2>Rehabilitation Monitoring Device</h2>
-      <p>
-        Arduino-based intelligent knee rehabilitation system using IMU sensors,
-        angle monitoring, and adaptive feedback mechanisms.
-      </p>
-      <ul>
-        <li>✔ Real-time angle calculation</li>
-        <li>✔ Threshold-based vibration alert</li>
-        <li>✔ WiFi-ready architecture</li>
-      </ul>
+<!-- PROJECT 1 -->
+<section class="panel">
+  <div class="panel-inner">
+    <div class="panel-image">
+      <img src="pic-1.jpeg" alt="Project 1">
     </div>
-    <div class="feature-image">
-      <img src="pic-1.jpeg">
+    <div class="panel-text">
+      <h2>Knee Rehabilitation Monitoring Device</h2>
+      <p>
+        IoT-enabled system using MPU6050 sensors for knee osteoarthritis patients.
+        Real-time angle monitoring with vibration alerts.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- FEATURE PROJECT 2 -->
-<section class="project-feature alt">
-  <div class="feature-inner">
-    <div class="feature-text">
+<!-- PROJECT 2 -->
+<section class="panel">
+  <div class="panel-inner reverse">
+    <div class="panel-image">
+      <img src="pic-2.jpeg" alt="Project 2">
+    </div>
+    <div class="panel-text">
       <h2>Autonomous Delivery Robot</h2>
       <p>
-        Navigation-driven robotic system integrating obstacle detection,
-        embedded control, and performance-optimized path logic.
+        Robotics + AI navigation system for autonomous campus delivery.
+        Focused on performance optimization and sensor fusion.
       </p>
-      <ul>
-        <li>✔ Sensor fusion</li>
-        <li>✔ Embedded firmware</li>
-        <li>✔ Real-world deployment logic</li>
-      </ul>
-    </div>
-    <div class="feature-image">
-      <img src="pic-2.jpeg">
     </div>
   </div>
 </section>
 
-<!-- FEATURE PROJECT 3 -->
-<section class="project-feature">
-  <div class="feature-inner">
-    <div class="feature-text">
+<!-- PROJECT 3 -->
+<section class="panel">
+  <div class="panel-inner">
+    <div class="panel-image">
+      <img src="pic-3.jpeg" alt="Project 3">
+    </div>
+    <div class="panel-text">
       <h2>Unreal Engine Game (In Development)</h2>
       <p>
-        Exploring performance-driven game mechanics, AI behaviors,
-        and interactive system design.
+        Designing a performance-driven immersive experience.
+        Open for collaboration — reach out if you want to build something wild.
       </p>
-      <ul>
-        <li>✔ Physics logic</li>
-        <li>✔ AI behavior systems</li>
-        <li>✔ High-performance rendering</li>
-      </ul>
-    </div>
-    <div class="feature-image">
-      <img src="pic-3.jpeg">
     </div>
   </div>
 </section>
@@ -100,4 +86,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
